@@ -1,0 +1,22 @@
+{
+  "name": "Chrome API Reporter",
+  "version": "1.0.0",
+
+  "background": {
+    "scripts": ["build/background.js"]
+  },
+  "content_scripts": [
+    {"matches": ["http://localhost:8088/*"], "js": ["build/contentScript.js"]}
+  ],
+  "devtools_page": "devtoolsPage.html",
+
+  "manifest_version": 2,
+  "description": "",
+  "permissions": ["downloads", "tabs"],
+
+  "applications": {
+    "gecko": {
+      "id": "chrome-api-reporter@mozilla.com"
+    }
+  }
+}
