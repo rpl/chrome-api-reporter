@@ -1,14 +1,12 @@
 import { handleActions } from "redux-actions";
 
-import { ADD_API_DESCRIPTOR } from "../actions";
+import { UPDATE_API_DESCRIPTORS } from "../actions";
 
 export const apiDescriptors = handleActions({
-  [ ADD_API_DESCRIPTOR ]: (state = {}, action) => {
-    const { apiContext, apiDescriptor } = action.payload;
-
+  [ UPDATE_API_DESCRIPTORS ]: (state = {}, action) => {
     return {
       ...state,
-      [ apiContext ]: apiDescriptor
+      ...action.payload
     }
   }
 }, {});

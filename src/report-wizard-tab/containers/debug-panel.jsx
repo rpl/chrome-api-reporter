@@ -12,7 +12,7 @@ import { actions } from "../shared";
 }, (dispatch) => {
   return {
     onComponentDidMount: () => {
-      dispatch(actions.connectBackgroundPage());
+      dispatch(actions.connectTabToBackgroundPage());
     }
   }
 })
