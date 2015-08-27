@@ -1,14 +1,13 @@
-console.log("DEVTOOLS PAGE LOADED", chrome);
+console.log("DEVTOOLS PAGE LOADED");
 
-import scanAPI from "./lib/scan-api";
-
-var aFileParts = ['<pre>',JSON.stringify({ chrome: scanAPI(chrome) }, null, 2),'</pre>'];
+import { actions, scanAPI } from "./shared";
 
 var port = chrome.runtime.connect();
 port.postMessage({
-  type: "download",
-  filename: "devtoolsPageAPIs.html",
-  content: aFileParts
+  type: actions.UPDATE_API_DESCRIPTORS,
+  apiDescriptors: {
+    devtoolsPage: scanAPI(chrome)
+  }
 });
 
 chrome.devtools.panels.create("Scan DevtoolsPanel APIs", "icon.png", "devtools-panel.html", function(panel) {

@@ -38,6 +38,7 @@ export function listenForAPIScans(store) {
 
     // react to state changes
     if (prevState.apiDescriptors !== newState.apiDescriptors) {
+
       let { port } = newState.backgroundPage;
       if (port) {
         port.postMessage({
@@ -89,7 +90,7 @@ export function listenForTabPorts(tab, store) {
     }
 
     // dispatch action to track the new pending connection
-    store.dispatch(connectBackgroundPageStart(port));
+    store.dispatch(connectBackgroundPageStart({ port }));
 
     port.onMessage.addListener(function(msg) {
       // handle start message

@@ -1,12 +1,11 @@
-console.log("CONTENT SCRIPT LOADED", chrome);
+console.log("CONTENT SCRIPT LOADED");
 
-import scanAPI from "./lib/scan-api"
+import { actions, scanAPI } from "./shared";
 
-var aFileParts = ['<pre>',JSON.stringify({ chrome: scanAPI(chrome) }, null, 2),'</pre>'];
-
-var port = chrome.extension.connect();
+var port = chrome.runtime.connect();
 port.postMessage({
-  type: "download",
-  filename: "contentScriptAPIs.html",
-  content: aFileParts
+  type: actions.UPDATE_API_DESCRIPTORS,
+  apiDescriptors: {
+    contentScript: scanAPI(chrome)
+  }
 });

@@ -1,3 +1,5 @@
+import scanAPI from "../scan-api"
+
 import {
   UPDATE_API_DESCRIPTORS,
 
@@ -75,6 +77,15 @@ export function connectTabToBackgroundPage() {
       switch(type) {
         case UPDATE_API_DESCRIPTORS:
           dispatch(updateAPIDescriptors(msg.apiDescriptors));
+
+          if (!msg.apiDescriptors.tabPage) {
+            port.postMessage({
+              type: UPDATE_API_DESCRIPTORS,
+              apiDescriptors: {
+                tabPage: scanAPI(chrome)
+              }
+            })
+          }
           break;
         default:
           // TODO: log warning messages "unexpected message received",

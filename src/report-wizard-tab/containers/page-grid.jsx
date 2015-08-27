@@ -2,6 +2,7 @@ import React from "react";
 
 import { Grid, Column } from "../components/semantic";
 
+import APIDescriptorsView from "./api-descriptors-view.jsx";
 import DebugPanel from "./debug-panel.jsx";
 
 export default class PageGrid extends React.Component {
@@ -9,7 +10,7 @@ export default class PageGrid extends React.Component {
     return (
       <Grid>
         <Column className="ten wide">
-          <h1>Main Area</h1>
+          <APIDescriptorsView></APIDescriptorsView>
         </Column>
         <Column className="six wide">
           <DebugPanel></DebugPanel>
