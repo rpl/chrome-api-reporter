@@ -8,18 +8,30 @@ var url = URL.createObjectURL(aBlob);
 
 //chrome.downloads.download({ url: url, filename: "backgroundPage_APIs.html" });
 
-chrome.windows.create({type: "normal"}, function (window)  {
-  console.log("WINDOW OPENED: " + window.id);
-  chrome.tabs.create({
-    windowId: window.id,
-    url: "reporterWizardPanel.html"
-  }, (tab) => {
-    console.log("TAB OPENED: " + JSON.stringify(tab));
-  })
+import {
+  CONNECT_BACKGROUND_PAGE_START,
+  CONNECT_BACKGROUND_PAGE_SUCCESS,
+  CONNECT_BACKGROUND_PAGE_FAILURE
+} from "./reportWizardPanel/actions";
+
+chrome.tabs.create({
+  windowId: window.id,
+  url: "reporterWizardPanel.html"
+}, (tab) => {
+  console.log("TAB OPENED: " + JSON.stringify(tab));
 });
 
 chrome.runtime.onConnect.addListener(function(port) {
   console.log("BACKGROUND PAGE - ON CONNECT: " + JSON.stringify(port.sender));
+
+  port.onMessage.addListener(function(msg) {
+    if (msg.type === CONNECT_BACKGROUND_PAGE_START) {
+      port.postMessage({
+        type: CONNECT_BACKGROUND_PAGE_FAILURE,
+        message: "Not yet implemented"
+      });
+    }
+  });
 
   port.onMessage.addListener(function(msg) {
     if (msg.type === "download") {
