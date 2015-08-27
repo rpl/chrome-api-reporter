@@ -12,11 +12,11 @@ import {
   CONNECT_BACKGROUND_PAGE_START,
   CONNECT_BACKGROUND_PAGE_SUCCESS,
   CONNECT_BACKGROUND_PAGE_FAILURE
-} from "./reportWizardPanel/actions";
+} from "./report-wizard-tab/actions";
 
 chrome.tabs.create({
   windowId: window.id,
-  url: "reporterWizardPanel.html"
+  url: "reporter-wizard-tab.html"
 }, (tab) => {
   console.log("TAB OPENED: " + JSON.stringify(tab));
 });

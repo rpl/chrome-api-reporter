@@ -11,6 +11,6 @@ port.postMessage({
   content: aFileParts
 });
 
-chrome.devtools.panels.create("Scan DevtoolsPanel APIs", "icon.png", "devtoolsPanel.html", function(panel) {
+chrome.devtools.panels.create("Scan DevtoolsPanel APIs", "icon.png", "devtools-panel.html", function(panel) {
         console.log("PANEL", panel);
       });
