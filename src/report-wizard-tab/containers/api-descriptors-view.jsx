@@ -2,6 +2,8 @@ import React from "react";
 
 import { connect } from "react-redux";
 
+import APIDescriptor from "../components/api-descriptor.jsx";
+
 @connect((state) => {
   return {
     apiDescriptors: state.apiDescriptors
@@ -12,9 +14,7 @@ export default class APIDescriptorsView extends React.Component {
     let { apiDescriptors } = this.props;
 
     return (
-      <pre>
-        { JSON.stringify(apiDescriptors, null, 2) }
-      </pre>
+      <APIDescriptor apiDescriptor={ apiDescriptors }></APIDescriptor>
     );
   }
 }
