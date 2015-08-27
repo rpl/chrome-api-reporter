@@ -1,6 +1,6 @@
 import { handleActions } from "redux-actions";
 
-import { ADD_API_DESCRIPTOR } from "./actions";
+import { ADD_API_DESCRIPTOR } from "../actions";
 
 export const apiDescriptors = handleActions({
   [ ADD_API_DESCRIPTOR ]: (state = {}, action) => {
@@ -20,7 +20,7 @@ import {
   CONNECT_BACKGROUND_PAGE_SUCCESS,
   CONNECT_BACKGROUND_PAGE_FAILURE,
   CONNECT_BACKGROUND_PAGE_TIMEOUT,
-} from "./actions";
+} from "../actions";
 
 export const backgroundPage = handleActions({
   [ CONNECT_BACKGROUND_PAGE_START ]: (state, action) => {

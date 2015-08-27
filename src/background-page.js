@@ -12,7 +12,7 @@ import {
   CONNECT_BACKGROUND_PAGE_START,
   CONNECT_BACKGROUND_PAGE_SUCCESS,
   CONNECT_BACKGROUND_PAGE_FAILURE
-} from "./report-wizard-tab/actions";
+} from "./shared/actions";
 
 chrome.tabs.create({
   windowId: window.id,
