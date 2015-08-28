@@ -19,7 +19,7 @@ export default class APIDescriptorsView extends React.Component {
       let value = apiDescriptors[key];
 
       return (
-        <Column className="three wide stackable">
+        <Column className="four wide">
           <Content>
             <h2>{ key }</h2>
             <APIDescriptor apiDescriptor={ value }></APIDescriptor>
@@ -28,6 +28,6 @@ export default class APIDescriptorsView extends React.Component {
       );
     });
 
-    return <Grid className="">{ content }</Grid>;
+    return <Grid className="stackable">{ content }</Grid>;
   }
 }

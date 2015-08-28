@@ -40,7 +40,7 @@ export default class APIDescriptor extends React.Component {
     let { apiDescriptor } = this.props;
     return <List style={{ paddingTop: "0.2em" }}>
       {
-        Object.keys(apiDescriptor).map((key) => {
+        Object.keys(apiDescriptor).sort().map((key) => {
           let value = apiDescriptor[key];
 
           if (value) {

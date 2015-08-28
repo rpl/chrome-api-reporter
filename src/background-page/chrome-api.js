@@ -6,10 +6,23 @@ var url = URL.createObjectURL(aBlob);
 
 // open reporter wizard tab helper
 
+export function openContentScriptInjectedTab() {
+  return new Promise((resolve, reject) => {
+    chrome.tabs.create({
+      url: "http://www.w3.org"
+    }, (tab) => {
+      chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
+        if (tab && tab.id === tabId && changeInfo.status == "complete") {
+          chrome.tabs.remove(tabId);
+        }
+      });
+    });
+  });
+}
+
 export function openReportWizardTab() {
   return new Promise((resolve, reject) => {
     chrome.tabs.create({
-      windowId: window.id,
       url: "reporter-wizard-tab.html"
     }, (tab) => {
       resolve(tab);
