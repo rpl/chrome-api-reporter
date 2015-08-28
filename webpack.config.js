@@ -2,11 +2,11 @@
 
 module.exports = {
   entry: {
-    "background-page": "./src/background-page.js",
+    "background-page": "./src/background-page",
     "content-script": "./src/content-script.js",
     "devtools-page": "./src/devtools-page.js",
     "devtools-panel": "./src/devtools-panel.js",
-    "reporter-wizard-tab": "./src/reporter-wizard-tab.js"
+    "report-wizard-tab": "./src/report-wizard-tab"
   },
   output: {
     path: __dirname + '/build/', // eslint-disable-line no-path-concat

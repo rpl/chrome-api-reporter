@@ -23,7 +23,7 @@ export function openContentScriptInjectedTab() {
 export function openReportWizardTab() {
   return new Promise((resolve, reject) => {
     chrome.tabs.create({
-      url: "reporter-wizard-tab.html"
+      url: "report-wizard-tab.html"
     }, (tab) => {
       resolve(tab);
     });
