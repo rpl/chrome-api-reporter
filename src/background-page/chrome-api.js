@@ -13,7 +13,9 @@ export function openContentScriptInjectedTab() {
     }, (tab) => {
       chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
         if (tab && tab.id === tabId && changeInfo.status == "complete") {
-          chrome.tabs.remove(tabId);
+          setTimeout(() => {
+            chrome.tabs.remove(tabId);
+          }, 2000);
         }
       });
     });
